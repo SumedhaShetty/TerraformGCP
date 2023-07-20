@@ -27,5 +27,9 @@ resource "google_compute_instance" "vm_instance" {
     network = google_compute_network.vpc_network.name
     access_config {
     }
-    }
+  }
+  labels = {
+    git_file = "main_tf"
+    git_org  = "SumedhaShetty"
+  }
 }

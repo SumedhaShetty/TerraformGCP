@@ -33,3 +33,14 @@ resource "google_compute_instance" "vm_instance" {
     git_org  = "SumedhaShetty"
   }
 }
+
+resource "google_compute_firewall" "ssh-rule" {
+  name = "terraform-demo-ssh"
+  network = google_compute_network.vpc_network.name
+  allow {
+    protocol = "tcp"
+    ports = ["22"]
+  }
+  target_tags = ["web"]
+  source_ranges = ["0.0.0.0/0"]
+}
